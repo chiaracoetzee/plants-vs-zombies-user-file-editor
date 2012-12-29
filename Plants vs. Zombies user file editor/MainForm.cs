@@ -801,6 +801,7 @@ namespace Plants_vs.Zombies_user_file_editor
                 }
                 else
                 {
+                    checkBoxNeverHappiness.Checked = false;
                     dateTimePickerLastHappiness.Enabled = true;
                     dateTimePickerLastHappiness.Value = plant.LastPhonographOrBugSprayTime;
                 }

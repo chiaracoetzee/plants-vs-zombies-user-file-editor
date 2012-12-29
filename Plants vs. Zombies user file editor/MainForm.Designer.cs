@@ -218,6 +218,7 @@
             this.label23 = new System.Windows.Forms.Label();
             this.checkBoxGoldenWateringCan = new System.Windows.Forms.CheckBox();
             this.groupBoxTreeOfWisdom = new System.Windows.Forms.GroupBox();
+            this.label45 = new System.Windows.Forms.Label();
             this.checkBoxPurchasedFood = new System.Windows.Forms.CheckBox();
             this.label20 = new System.Windows.Forms.Label();
             this.numericUpDownTreeFood = new System.Windows.Forms.NumericUpDown();
@@ -234,11 +235,10 @@
             this.labelMarigold1PurchasedOn = new System.Windows.Forms.Label();
             this.dateTimePickerMarigold1 = new System.Windows.Forms.DateTimePicker();
             this.tabPageZombatars = new System.Windows.Forms.TabPage();
+            this.label44 = new System.Windows.Forms.Label();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonReload = new System.Windows.Forms.Button();
             this.buttonAbout = new System.Windows.Forms.Button();
-            this.label44 = new System.Windows.Forms.Label();
-            this.label45 = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
             this.groupBoxStore.SuspendLayout();
@@ -2006,7 +2006,7 @@
             // 
             this.numericUpDownFertilizedTimes.Location = new System.Drawing.Point(711, 199);
             this.numericUpDownFertilizedTimes.Maximum = new decimal(new int[] {
-            10,
+            3,
             0,
             0,
             0});
@@ -2057,7 +2057,7 @@
             // 
             this.numericUpDownWateredTimes.Location = new System.Drawing.Point(711, 142);
             this.numericUpDownWateredTimes.Maximum = new decimal(new int[] {
-            10,
+            6,
             0,
             0,
             0});
@@ -2565,6 +2565,15 @@
             this.groupBoxTreeOfWisdom.TabStop = false;
             this.groupBoxTreeOfWisdom.Text = "Tree of Wisdom";
             // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Location = new System.Drawing.Point(263, 20);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(25, 13);
+            this.label45.TabIndex = 6;
+            this.label45.Text = "feet";
+            // 
             // checkBoxPurchasedFood
             // 
             this.checkBoxPurchasedFood.AutoSize = true;
@@ -2738,6 +2747,16 @@
             this.tabPageZombatars.Text = "Zombatars";
             this.tabPageZombatars.UseVisualStyleBackColor = true;
             // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(4, 4);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(382, 13);
+            this.label44.TabIndex = 0;
+            this.label44.Text = "Editing Zombatars is not yet available. Any existing Zombatars will be preserved." +
+    "";
+            // 
             // buttonSave
             // 
             this.buttonSave.Enabled = false;
@@ -2768,25 +2787,6 @@
             this.buttonAbout.Text = "About";
             this.buttonAbout.UseVisualStyleBackColor = true;
             this.buttonAbout.Click += new System.EventHandler(this.buttonAbout_Click);
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.Location = new System.Drawing.Point(4, 4);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(382, 13);
-            this.label44.TabIndex = 0;
-            this.label44.Text = "Editing Zombatars is not yet available. Any existing Zombatars will be preserved." +
-    "";
-            // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(263, 20);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(25, 13);
-            this.label45.TabIndex = 6;
-            this.label45.Text = "feet";
             // 
             // MainForm
             // 
