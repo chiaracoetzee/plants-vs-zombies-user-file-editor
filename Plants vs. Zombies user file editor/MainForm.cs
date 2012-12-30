@@ -510,7 +510,7 @@ namespace Plants_vs.Zombies_user_file_editor
                     labelCompletedAdventureModeEffects.Text = "Level determines plants/items and whether Almanac, Garden, Shop unlocked";
                     break;
                 case 1:
-                    labelCompletedAdventureModeEffects.Text = "Silver Sunflower trophy, all modes unlocked, all items in shop";
+                    labelCompletedAdventureModeEffects.Text = "Silver Sunflower Trophy, all modes unlocked, all items in shop";
                     break;
                 default:
                     labelCompletedAdventureModeEffects.Text = "Yeti Zombie in Almanac";
