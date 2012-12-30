@@ -38,9 +38,9 @@
             this.checkBoxWallNutFirstAid = new System.Windows.Forms.CheckBox();
             this.checkBoxShopPlant8 = new System.Windows.Forms.CheckBox();
             this.checkBoxShopPlant7 = new System.Windows.Forms.CheckBox();
-            this.checkBoxShopPlant6 = new System.Windows.Forms.CheckBox();
-            this.checkBoxShopPlant5 = new System.Windows.Forms.CheckBox();
             this.checkBoxShopPlant4 = new System.Windows.Forms.CheckBox();
+            this.checkBoxShopPlant5 = new System.Windows.Forms.CheckBox();
+            this.checkBoxShopPlant6 = new System.Windows.Forms.CheckBox();
             this.checkBoxShopPlant3 = new System.Windows.Forms.CheckBox();
             this.checkBoxShopPlant2 = new System.Windows.Forms.CheckBox();
             this.checkBoxShopPlant1 = new System.Windows.Forms.CheckBox();
@@ -361,9 +361,9 @@
             this.groupBoxStore.Controls.Add(this.checkBoxWallNutFirstAid);
             this.groupBoxStore.Controls.Add(this.checkBoxShopPlant8);
             this.groupBoxStore.Controls.Add(this.checkBoxShopPlant7);
-            this.groupBoxStore.Controls.Add(this.checkBoxShopPlant6);
-            this.groupBoxStore.Controls.Add(this.checkBoxShopPlant5);
             this.groupBoxStore.Controls.Add(this.checkBoxShopPlant4);
+            this.groupBoxStore.Controls.Add(this.checkBoxShopPlant5);
+            this.groupBoxStore.Controls.Add(this.checkBoxShopPlant6);
             this.groupBoxStore.Controls.Add(this.checkBoxShopPlant3);
             this.groupBoxStore.Controls.Add(this.checkBoxShopPlant2);
             this.groupBoxStore.Controls.Add(this.checkBoxShopPlant1);
@@ -414,16 +414,16 @@
             this.checkBoxShopPlant7.UseVisualStyleBackColor = true;
             this.checkBoxShopPlant7.CheckedChanged += new System.EventHandler(this.somethingChanged);
             // 
-            // checkBoxShopPlant6
+            // checkBoxShopPlant4
             // 
-            this.checkBoxShopPlant6.AutoSize = true;
-            this.checkBoxShopPlant6.Location = new System.Drawing.Point(195, 89);
-            this.checkBoxShopPlant6.Name = "checkBoxShopPlant6";
-            this.checkBoxShopPlant6.Size = new System.Drawing.Size(88, 17);
-            this.checkBoxShopPlant6.TabIndex = 12;
-            this.checkBoxShopPlant6.Text = "Winter melon";
-            this.checkBoxShopPlant6.UseVisualStyleBackColor = true;
-            this.checkBoxShopPlant6.CheckedChanged += new System.EventHandler(this.somethingChanged);
+            this.checkBoxShopPlant4.AutoSize = true;
+            this.checkBoxShopPlant4.Location = new System.Drawing.Point(195, 89);
+            this.checkBoxShopPlant4.Name = "checkBoxShopPlant4";
+            this.checkBoxShopPlant4.Size = new System.Drawing.Size(88, 17);
+            this.checkBoxShopPlant4.TabIndex = 12;
+            this.checkBoxShopPlant4.Text = "Winter melon";
+            this.checkBoxShopPlant4.UseVisualStyleBackColor = true;
+            this.checkBoxShopPlant4.CheckedChanged += new System.EventHandler(this.somethingChanged);
             // 
             // checkBoxShopPlant5
             // 
@@ -436,16 +436,16 @@
             this.checkBoxShopPlant5.UseVisualStyleBackColor = true;
             this.checkBoxShopPlant5.CheckedChanged += new System.EventHandler(this.somethingChanged);
             // 
-            // checkBoxShopPlant4
+            // checkBoxShopPlant6
             // 
-            this.checkBoxShopPlant4.AutoSize = true;
-            this.checkBoxShopPlant4.Location = new System.Drawing.Point(6, 89);
-            this.checkBoxShopPlant4.Name = "checkBoxShopPlant4";
-            this.checkBoxShopPlant4.Size = new System.Drawing.Size(74, 17);
-            this.checkBoxShopPlant4.TabIndex = 10;
-            this.checkBoxShopPlant4.Text = "Spikerock";
-            this.checkBoxShopPlant4.UseVisualStyleBackColor = true;
-            this.checkBoxShopPlant4.CheckedChanged += new System.EventHandler(this.somethingChanged);
+            this.checkBoxShopPlant6.AutoSize = true;
+            this.checkBoxShopPlant6.Location = new System.Drawing.Point(6, 89);
+            this.checkBoxShopPlant6.Name = "checkBoxShopPlant6";
+            this.checkBoxShopPlant6.Size = new System.Drawing.Size(74, 17);
+            this.checkBoxShopPlant6.TabIndex = 10;
+            this.checkBoxShopPlant6.Text = "Spikerock";
+            this.checkBoxShopPlant6.UseVisualStyleBackColor = true;
+            this.checkBoxShopPlant6.CheckedChanged += new System.EventHandler(this.somethingChanged);
             // 
             // checkBoxShopPlant3
             // 
@@ -2946,9 +2946,9 @@
         private System.Windows.Forms.CheckBox checkBoxWallNutFirstAid;
         private System.Windows.Forms.CheckBox checkBoxShopPlant8;
         private System.Windows.Forms.CheckBox checkBoxShopPlant7;
-        private System.Windows.Forms.CheckBox checkBoxShopPlant6;
-        private System.Windows.Forms.CheckBox checkBoxShopPlant5;
         private System.Windows.Forms.CheckBox checkBoxShopPlant4;
+        private System.Windows.Forms.CheckBox checkBoxShopPlant5;
+        private System.Windows.Forms.CheckBox checkBoxShopPlant6;
         private System.Windows.Forms.CheckBox checkBoxShopPlant3;
         private System.Windows.Forms.CheckBox checkBoxShopPlant2;
         private System.Windows.Forms.CheckBox checkBoxShopPlant1;
