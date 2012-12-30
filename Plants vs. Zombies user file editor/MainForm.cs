@@ -921,5 +921,23 @@ namespace Plants_vs.Zombies_user_file_editor
         {
             new FormAbout().ShowDialog(this);
         }
+
+        private void buttonSelectAllAchievements_Click(object sender, EventArgs e)
+        {
+            foreach (var checkBox in achievementCheckBox)
+            {
+                checkBox.Checked = true;
+            }
+            MarkChanged(true);
+        }
+
+        private void buttonSelectNoAchievements_Click(object sender, EventArgs e)
+        {
+            foreach (var checkBox in achievementCheckBox)
+            {
+                checkBox.Checked = false;
+            }
+            MarkChanged(true);
+        }
     }
 }

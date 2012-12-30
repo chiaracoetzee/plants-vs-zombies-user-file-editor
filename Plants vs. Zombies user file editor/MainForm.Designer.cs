@@ -239,6 +239,8 @@
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonReload = new System.Windows.Forms.Button();
             this.buttonAbout = new System.Windows.Forms.Button();
+            this.buttonSelectAllAchievements = new System.Windows.Forms.Button();
+            this.buttonSelectNoAchievements = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
             this.groupBoxStore.SuspendLayout();
@@ -326,9 +328,9 @@
             this.checkBoxHasTaco.AutoSize = true;
             this.checkBoxHasTaco.Location = new System.Drawing.Point(9, 180);
             this.checkBoxHasTaco.Name = "checkBoxHasTaco";
-            this.checkBoxHasTaco.Size = new System.Drawing.Size(69, 17);
+            this.checkBoxHasTaco.Size = new System.Drawing.Size(105, 17);
             this.checkBoxHasTaco.TabIndex = 13;
-            this.checkBoxHasTaco.Text = "Has &taco";
+            this.checkBoxHasTaco.Text = "Has Magic &Taco";
             this.checkBoxHasTaco.UseVisualStyleBackColor = true;
             this.checkBoxHasTaco.CheckedChanged += new System.EventHandler(this.somethingChanged);
             // 
@@ -511,11 +513,6 @@
             this.numericUpDownRake.Name = "numericUpDownRake";
             this.numericUpDownRake.Size = new System.Drawing.Size(85, 20);
             this.numericUpDownRake.TabIndex = 5;
-            this.numericUpDownRake.Value = new decimal(new int[] {
-            2147483640,
-            0,
-            0,
-            0});
             this.numericUpDownRake.ValueChanged += new System.EventHandler(this.somethingChanged);
             // 
             // label22
@@ -564,7 +561,7 @@
             this.numericUpDownNumSlots.Size = new System.Drawing.Size(36, 20);
             this.numericUpDownNumSlots.TabIndex = 4;
             this.numericUpDownNumSlots.Value = new decimal(new int[] {
-            10,
+            6,
             0,
             0,
             0});
@@ -842,11 +839,6 @@
             this.numericUpDownSurvivalEndless.Name = "numericUpDownSurvivalEndless";
             this.numericUpDownSurvivalEndless.Size = new System.Drawing.Size(85, 20);
             this.numericUpDownSurvivalEndless.TabIndex = 22;
-            this.numericUpDownSurvivalEndless.Value = new decimal(new int[] {
-            2147483640,
-            0,
-            0,
-            0});
             this.numericUpDownSurvivalEndless.ValueChanged += new System.EventHandler(this.somethingChanged);
             // 
             // labelSurvivalEndlessStreakLength
@@ -911,11 +903,6 @@
             this.numericUpDownIZombieEndless.Name = "numericUpDownIZombieEndless";
             this.numericUpDownIZombieEndless.Size = new System.Drawing.Size(85, 20);
             this.numericUpDownIZombieEndless.TabIndex = 23;
-            this.numericUpDownIZombieEndless.Value = new decimal(new int[] {
-            2147483640,
-            0,
-            0,
-            0});
             this.numericUpDownIZombieEndless.ValueChanged += new System.EventHandler(this.somethingChanged);
             // 
             // labelIZombieEndlessStreakLength
@@ -938,11 +925,6 @@
             this.numericUpDownVaseBreakerEndless.Name = "numericUpDownVaseBreakerEndless";
             this.numericUpDownVaseBreakerEndless.Size = new System.Drawing.Size(85, 20);
             this.numericUpDownVaseBreakerEndless.TabIndex = 21;
-            this.numericUpDownVaseBreakerEndless.Value = new decimal(new int[] {
-            2147483640,
-            0,
-            0,
-            0});
             this.numericUpDownVaseBreakerEndless.ValueChanged += new System.EventHandler(this.somethingChanged);
             // 
             // labelVaseBreakerEndlessStreakLength
@@ -1494,11 +1476,6 @@
             this.numericUpDownMoney.Name = "numericUpDownMoney";
             this.numericUpDownMoney.Size = new System.Drawing.Size(85, 20);
             this.numericUpDownMoney.TabIndex = 10;
-            this.numericUpDownMoney.Value = new decimal(new int[] {
-            2147483640,
-            0,
-            0,
-            0});
             this.numericUpDownMoney.ValueChanged += new System.EventHandler(this.somethingChanged);
             // 
             // labelMoney
@@ -1530,11 +1507,6 @@
             this.numericUpDownNumTimesCompletedAdventureMode.Name = "numericUpDownNumTimesCompletedAdventureMode";
             this.numericUpDownNumTimesCompletedAdventureMode.Size = new System.Drawing.Size(85, 20);
             this.numericUpDownNumTimesCompletedAdventureMode.TabIndex = 5;
-            this.numericUpDownNumTimesCompletedAdventureMode.Value = new decimal(new int[] {
-            2147483647,
-            0,
-            0,
-            0});
             this.numericUpDownNumTimesCompletedAdventureMode.ValueChanged += new System.EventHandler(this.numericUpDownNumTimesCompletedAdventureMode_ValueChanged);
             // 
             // labelNumTimesCompletedAdventureMode
@@ -1584,6 +1556,8 @@
             // 
             // tabPageAchievements
             // 
+            this.tabPageAchievements.Controls.Add(this.buttonSelectNoAchievements);
+            this.tabPageAchievements.Controls.Add(this.buttonSelectAllAchievements);
             this.tabPageAchievements.Controls.Add(this.checkBoxAchievement19);
             this.tabPageAchievements.Controls.Add(this.checkBoxAchievement18);
             this.tabPageAchievements.Controls.Add(this.checkBoxAchievement17);
@@ -1618,7 +1592,7 @@
             this.checkBoxAchievement19.Name = "checkBoxAchievement19";
             this.checkBoxAchievement19.Size = new System.Drawing.Size(103, 17);
             this.checkBoxAchievement19.TabIndex = 19;
-            this.checkBoxAchievement19.Text = "Mustache Mode";
+            this.checkBoxAchievement19.Text = "Mustac&he Mode";
             this.checkBoxAchievement19.UseVisualStyleBackColor = true;
             this.checkBoxAchievement19.CheckedChanged += new System.EventHandler(this.somethingChanged);
             // 
@@ -1629,7 +1603,7 @@
             this.checkBoxAchievement18.Name = "checkBoxAchievement18";
             this.checkBoxAchievement18.Size = new System.Drawing.Size(111, 17);
             this.checkBoxAchievement18.TabIndex = 18;
-            this.checkBoxAchievement18.Text = "Towering Wisdom";
+            this.checkBoxAchievement18.Text = "&Towering Wisdom";
             this.checkBoxAchievement18.UseVisualStyleBackColor = true;
             this.checkBoxAchievement18.CheckedChanged += new System.EventHandler(this.somethingChanged);
             // 
@@ -1640,7 +1614,7 @@
             this.checkBoxAchievement17.Name = "checkBoxAchievement17";
             this.checkBoxAchievement17.Size = new System.Drawing.Size(65, 17);
             this.checkBoxAchievement17.TabIndex = 17;
-            this.checkBoxAchievement17.Text = "Immortal";
+            this.checkBoxAchievement17.Text = "&Immortal";
             this.checkBoxAchievement17.UseVisualStyleBackColor = true;
             this.checkBoxAchievement17.CheckedChanged += new System.EventHandler(this.somethingChanged);
             // 
@@ -1651,7 +1625,7 @@
             this.checkBoxAchievement16.Name = "checkBoxAchievement16";
             this.checkBoxAchievement16.Size = new System.Drawing.Size(112, 17);
             this.checkBoxAchievement16.TabIndex = 16;
-            this.checkBoxAchievement16.Text = "Beyond the Grave";
+            this.checkBoxAchievement16.Text = "Beyond the Gra&ve";
             this.checkBoxAchievement16.UseVisualStyleBackColor = true;
             this.checkBoxAchievement16.CheckedChanged += new System.EventHandler(this.somethingChanged);
             // 
@@ -1662,7 +1636,7 @@
             this.checkBoxAchievement15.Name = "checkBoxAchievement15";
             this.checkBoxAchievement15.Size = new System.Drawing.Size(130, 17);
             this.checkBoxAchievement15.TabIndex = 15;
-            this.checkBoxAchievement15.Text = "No Fungus Among Us";
+            this.checkBoxAchievement15.Text = "No &Fungus Among Us";
             this.checkBoxAchievement15.UseVisualStyleBackColor = true;
             this.checkBoxAchievement15.CheckedChanged += new System.EventHandler(this.somethingChanged);
             // 
@@ -1673,7 +1647,7 @@
             this.checkBoxAchievement14.Name = "checkBoxAchievement14";
             this.checkBoxAchievement14.Size = new System.Drawing.Size(93, 17);
             this.checkBoxAchievement14.TabIndex = 14;
-            this.checkBoxAchievement14.Text = "Good Morning";
+            this.checkBoxAchievement14.Text = "G&ood Morning";
             this.checkBoxAchievement14.UseVisualStyleBackColor = true;
             this.checkBoxAchievement14.CheckedChanged += new System.EventHandler(this.somethingChanged);
             // 
@@ -1684,7 +1658,7 @@
             this.checkBoxAchievement13.Name = "checkBoxAchievement13";
             this.checkBoxAchievement13.Size = new System.Drawing.Size(93, 17);
             this.checkBoxAchievement13.TabIndex = 13;
-            this.checkBoxAchievement13.Text = "Popcorn Party";
+            this.checkBoxAchievement13.Text = "Popcorn Part&y";
             this.checkBoxAchievement13.UseVisualStyleBackColor = true;
             this.checkBoxAchievement13.CheckedChanged += new System.EventHandler(this.somethingChanged);
             // 
@@ -1695,7 +1669,7 @@
             this.checkBoxAchievement12.Name = "checkBoxAchievement12";
             this.checkBoxAchievement12.Size = new System.Drawing.Size(83, 17);
             this.checkBoxAchievement12.TabIndex = 12;
-            this.checkBoxAchievement12.Text = "Sunny Days";
+            this.checkBoxAchievement12.Text = "S&unny Days";
             this.checkBoxAchievement12.UseVisualStyleBackColor = true;
             this.checkBoxAchievement12.CheckedChanged += new System.EventHandler(this.somethingChanged);
             // 
@@ -1706,7 +1680,7 @@
             this.checkBoxAchievement11.Name = "checkBoxAchievement11";
             this.checkBoxAchievement11.Size = new System.Drawing.Size(95, 17);
             this.checkBoxAchievement11.TabIndex = 11;
-            this.checkBoxAchievement11.Text = "Penny Pincher";
+            this.checkBoxAchievement11.Text = "&Penny Pincher";
             this.checkBoxAchievement11.UseVisualStyleBackColor = true;
             this.checkBoxAchievement11.CheckedChanged += new System.EventHandler(this.somethingChanged);
             // 
@@ -1717,7 +1691,7 @@
             this.checkBoxAchievement10.Name = "checkBoxAchievement10";
             this.checkBoxAchievement10.Size = new System.Drawing.Size(83, 17);
             this.checkBoxAchievement10.TabIndex = 10;
-            this.checkBoxAchievement10.Text = "Zombologist";
+            this.checkBoxAchievement10.Text = "&Zombologist";
             this.checkBoxAchievement10.UseVisualStyleBackColor = true;
             this.checkBoxAchievement10.CheckedChanged += new System.EventHandler(this.somethingChanged);
             // 
@@ -1728,7 +1702,7 @@
             this.checkBoxAchievement9.Name = "checkBoxAchievement9";
             this.checkBoxAchievement9.Size = new System.Drawing.Size(73, 17);
             this.checkBoxAchievement9.TabIndex = 9;
-            this.checkBoxAchievement9.Text = "Grounded";
+            this.checkBoxAchievement9.Text = "&Grounded";
             this.checkBoxAchievement9.UseVisualStyleBackColor = true;
             this.checkBoxAchievement9.CheckedChanged += new System.EventHandler(this.somethingChanged);
             // 
@@ -1739,7 +1713,7 @@
             this.checkBoxAchievement8.Name = "checkBoxAchievement8";
             this.checkBoxAchievement8.Size = new System.Drawing.Size(108, 17);
             this.checkBoxAchievement8.TabIndex = 8;
-            this.checkBoxAchievement8.Text = "Roll Some Heads";
+            this.checkBoxAchievement8.Text = "&Roll Some Heads";
             this.checkBoxAchievement8.UseVisualStyleBackColor = true;
             this.checkBoxAchievement8.CheckedChanged += new System.EventHandler(this.somethingChanged);
             // 
@@ -1750,7 +1724,7 @@
             this.checkBoxAchievement7.Name = "checkBoxAchievement7";
             this.checkBoxAchievement7.Size = new System.Drawing.Size(126, 17);
             this.checkBoxAchievement7.TabIndex = 7;
-            this.checkBoxAchievement7.Text = "Don\'t Pea in the Pool";
+            this.checkBoxAchievement7.Text = "&Don\'t Pea in the Pool";
             this.checkBoxAchievement7.UseVisualStyleBackColor = true;
             this.checkBoxAchievement7.CheckedChanged += new System.EventHandler(this.somethingChanged);
             // 
@@ -1761,7 +1735,7 @@
             this.checkBoxAchievement6.Name = "checkBoxAchievement6";
             this.checkBoxAchievement6.Size = new System.Drawing.Size(93, 17);
             this.checkBoxAchievement6.TabIndex = 6;
-            this.checkBoxAchievement6.Text = "Morticulturalist";
+            this.checkBoxAchievement6.Text = "&Morticulturalist";
             this.checkBoxAchievement6.UseVisualStyleBackColor = true;
             this.checkBoxAchievement6.CheckedChanged += new System.EventHandler(this.somethingChanged);
             // 
@@ -1772,7 +1746,7 @@
             this.checkBoxAchievement5.Name = "checkBoxAchievement5";
             this.checkBoxAchievement5.Size = new System.Drawing.Size(88, 17);
             this.checkBoxAchievement5.TabIndex = 5;
-            this.checkBoxAchievement5.Text = "Explodonator";
+            this.checkBoxAchievement5.Text = "&Explodonator";
             this.checkBoxAchievement5.UseVisualStyleBackColor = true;
             this.checkBoxAchievement5.CheckedChanged += new System.EventHandler(this.somethingChanged);
             // 
@@ -1781,9 +1755,9 @@
             this.checkBoxAchievement4.AutoSize = true;
             this.checkBoxAchievement4.Location = new System.Drawing.Point(8, 60);
             this.checkBoxAchievement4.Name = "checkBoxAchievement4";
-            this.checkBoxAchievement4.Size = new System.Drawing.Size(68, 17);
+            this.checkBoxAchievement4.Size = new System.Drawing.Size(78, 17);
             this.checkBoxAchievement4.TabIndex = 4;
-            this.checkBoxAchievement4.Text = "Spudow!";
+            this.checkBoxAchievement4.Text = "&SPUDOW!";
             this.checkBoxAchievement4.UseVisualStyleBackColor = true;
             this.checkBoxAchievement4.CheckedChanged += new System.EventHandler(this.somethingChanged);
             // 
@@ -1794,7 +1768,7 @@
             this.checkBoxAchievement3.Name = "checkBoxAchievement3";
             this.checkBoxAchievement3.Size = new System.Drawing.Size(81, 17);
             this.checkBoxAchievement3.TabIndex = 3;
-            this.checkBoxAchievement3.Text = "China Shop";
+            this.checkBoxAchievement3.Text = "&China Shop";
             this.checkBoxAchievement3.UseVisualStyleBackColor = true;
             this.checkBoxAchievement3.CheckedChanged += new System.EventHandler(this.somethingChanged);
             // 
@@ -1805,7 +1779,7 @@
             this.checkBoxAchievement2.Name = "checkBoxAchievement2";
             this.checkBoxAchievement2.Size = new System.Drawing.Size(100, 17);
             this.checkBoxAchievement2.TabIndex = 2;
-            this.checkBoxAchievement2.Text = "Better Off Dead";
+            this.checkBoxAchievement2.Text = "&Better Off Dead";
             this.checkBoxAchievement2.UseVisualStyleBackColor = true;
             this.checkBoxAchievement2.CheckedChanged += new System.EventHandler(this.somethingChanged);
             // 
@@ -1816,7 +1790,7 @@
             this.checkBoxAchievement1.Name = "checkBoxAchievement1";
             this.checkBoxAchievement1.Size = new System.Drawing.Size(107, 17);
             this.checkBoxAchievement1.TabIndex = 1;
-            this.checkBoxAchievement1.Text = "Nobel Peas Prize";
+            this.checkBoxAchievement1.Text = "Nobe&l Peas Prize";
             this.checkBoxAchievement1.UseVisualStyleBackColor = true;
             this.checkBoxAchievement1.CheckedChanged += new System.EventHandler(this.somethingChanged);
             // 
@@ -1827,7 +1801,7 @@
             this.checkBoxAchievement0.Name = "checkBoxAchievement0";
             this.checkBoxAchievement0.Size = new System.Drawing.Size(124, 17);
             this.checkBoxAchievement0.TabIndex = 0;
-            this.checkBoxAchievement0.Text = "Home Lawn Security";
+            this.checkBoxAchievement0.Text = "&Home Lawn Security";
             this.checkBoxAchievement0.UseVisualStyleBackColor = true;
             this.checkBoxAchievement0.CheckedChanged += new System.EventHandler(this.somethingChanged);
             // 
@@ -2495,11 +2469,6 @@
             this.numericUpDownBugSpray.Name = "numericUpDownBugSpray";
             this.numericUpDownBugSpray.Size = new System.Drawing.Size(85, 20);
             this.numericUpDownBugSpray.TabIndex = 16;
-            this.numericUpDownBugSpray.Value = new decimal(new int[] {
-            2147483640,
-            0,
-            0,
-            0});
             this.numericUpDownBugSpray.ValueChanged += new System.EventHandler(this.somethingChanged);
             // 
             // label24
@@ -2522,11 +2491,6 @@
             this.numericUpDownFertilizer.Name = "numericUpDownFertilizer";
             this.numericUpDownFertilizer.Size = new System.Drawing.Size(85, 20);
             this.numericUpDownFertilizer.TabIndex = 13;
-            this.numericUpDownFertilizer.Value = new decimal(new int[] {
-            2147483640,
-            0,
-            0,
-            0});
             this.numericUpDownFertilizer.ValueChanged += new System.EventHandler(this.somethingChanged);
             // 
             // label23
@@ -2605,11 +2569,6 @@
             this.numericUpDownTreeFood.Name = "numericUpDownTreeFood";
             this.numericUpDownTreeFood.Size = new System.Drawing.Size(86, 20);
             this.numericUpDownTreeFood.TabIndex = 5;
-            this.numericUpDownTreeFood.Value = new decimal(new int[] {
-            2147483640,
-            0,
-            0,
-            0});
             this.numericUpDownTreeFood.ValueChanged += new System.EventHandler(this.somethingChanged);
             // 
             // checkBoxTreeOfWisdomAvailable
@@ -2643,11 +2602,6 @@
             this.numericUpDownTreeOfWisdomHeight.Name = "numericUpDownTreeOfWisdomHeight";
             this.numericUpDownTreeOfWisdomHeight.Size = new System.Drawing.Size(86, 20);
             this.numericUpDownTreeOfWisdomHeight.TabIndex = 2;
-            this.numericUpDownTreeOfWisdomHeight.Value = new decimal(new int[] {
-            2147483640,
-            0,
-            0,
-            0});
             this.numericUpDownTreeOfWisdomHeight.ValueChanged += new System.EventHandler(this.somethingChanged);
             // 
             // checkBoxMarigold3Never
@@ -2787,6 +2741,26 @@
             this.buttonAbout.Text = "About";
             this.buttonAbout.UseVisualStyleBackColor = true;
             this.buttonAbout.Click += new System.EventHandler(this.buttonAbout_Click);
+            // 
+            // buttonSelectAllAchievements
+            // 
+            this.buttonSelectAllAchievements.Location = new System.Drawing.Point(8, 245);
+            this.buttonSelectAllAchievements.Name = "buttonSelectAllAchievements";
+            this.buttonSelectAllAchievements.Size = new System.Drawing.Size(75, 23);
+            this.buttonSelectAllAchievements.TabIndex = 20;
+            this.buttonSelectAllAchievements.Text = "&All";
+            this.buttonSelectAllAchievements.UseVisualStyleBackColor = true;
+            this.buttonSelectAllAchievements.Click += new System.EventHandler(this.buttonSelectAllAchievements_Click);
+            // 
+            // buttonSelectNoAchievements
+            // 
+            this.buttonSelectNoAchievements.Location = new System.Drawing.Point(89, 244);
+            this.buttonSelectNoAchievements.Name = "buttonSelectNoAchievements";
+            this.buttonSelectNoAchievements.Size = new System.Drawing.Size(75, 23);
+            this.buttonSelectNoAchievements.TabIndex = 21;
+            this.buttonSelectNoAchievements.Text = "&None";
+            this.buttonSelectNoAchievements.UseVisualStyleBackColor = true;
+            this.buttonSelectNoAchievements.Click += new System.EventHandler(this.buttonSelectNoAchievements_Click);
             // 
             // MainForm
             // 
@@ -3070,6 +3044,8 @@
         private System.Windows.Forms.Button buttonAbout;
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.Button buttonSelectNoAchievements;
+        private System.Windows.Forms.Button buttonSelectAllAchievements;
     }
 }
 
