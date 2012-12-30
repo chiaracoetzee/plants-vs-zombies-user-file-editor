@@ -5,7 +5,6 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -40,7 +39,7 @@ namespace Plants_vs.Zombies_user_file_editor
             pvzDataPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + @"\PopCap Games\PlantsVsZombies\userdata\";
             if (!Directory.Exists(pvzDataPath))
             {
-                var programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86) != "" ? Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86) : Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+                var programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
                 pvzDataPath = programFiles + @"\PopCap Games\Plants vs. Zombies\userdata\";
                 using (StreamWriter writer = new StreamWriter("c:\\temp.txt")) { writer.WriteLine(pvzDataPath); }
                 if (!Directory.Exists(pvzDataPath))

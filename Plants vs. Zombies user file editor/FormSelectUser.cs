@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -14,7 +13,9 @@ namespace Plants_vs.Zombies_user_file_editor
         public FormSelectUser(ICollection<string> list)
         {
             InitializeComponent();
-            listBoxUsers.DataSource = list.ToArray();
+            string[] array = new string[list.Count];
+            list.CopyTo(array, 0);
+            listBoxUsers.DataSource = array;
         }
 
         public string SelectedUser
