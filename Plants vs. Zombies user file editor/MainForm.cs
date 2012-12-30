@@ -17,12 +17,8 @@ namespace Plants_vs.Zombies_user_file_editor
             InitializeComponent();
         }
 
-        string pvzDataPath;
-        string userFilePath;
         User user;
 
-        const string UsersFileNotFoundCaption = "Plants vs. Zombies users file not found";
-        const string UsersFileNotFoundMessage = "{0} Make sure Plants vs. Zombies is installed.";
         const string IncompatibleVersionCaption = "Incompatible version";
         const string IncompatibleVersionMessage = "This application was designed for use with another version of Plants vs. Zombies. The application will back up your user data file, but may cause corruption. If you continue, results may be unpredictable. Continue?";
         const string GameIsRunningCaption = "Game currently running";
@@ -31,34 +27,11 @@ namespace Plants_vs.Zombies_user_file_editor
         const string UnsavedChangesMessage = "You have made changes but not saved them to the user file. Are you sure you want to quit without saving?";
 
         bool acceptedIncompatibleVersion = false;
-        Dictionary<string, uint> users = new Dictionary<string, uint>();
 
         private void MainForm_Load(object sender, EventArgs e)
         {
             InitializeControlArrays();
-            pvzDataPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + @"\PopCap Games\PlantsVsZombies\userdata\";
-            if (!Directory.Exists(pvzDataPath))
-            {
-                var programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
-                pvzDataPath = programFiles + @"\PopCap Games\Plants vs. Zombies\userdata\";
-                using (StreamWriter writer = new StreamWriter("c:\\temp.txt")) { writer.WriteLine(pvzDataPath); }
-                if (!Directory.Exists(pvzDataPath))
-                {
-                    MessageBox.Show("User data path not found. Make sure Plants vs. Zombies is installed.", "Plants vs. Zombies user data path not found", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Application.Exit();
-                    return;
-                }
-            }
-            users = ReadUsersFile();
-            if (users == null)
-            {
-                return;
-            }
-            if (users.Count == 0)
-            {
-                MessageBox.Show("No users found. Create at least one user in the game in order to edit it. Exiting application.", "No users found", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+
             SelectUser();
 
             comboBoxPlantType.Items.AddRange(ZenGardenPlant.PlantTypeNames);
@@ -177,7 +150,7 @@ namespace Plants_vs.Zombies_user_file_editor
 
         private void SelectUser()
         {
-            var formSelectUser = new FormSelectUser(users.Keys);
+            var formSelectUser = new FormSelectUser();
             if (formSelectUser.ShowDialog(this) != DialogResult.OK)
             {
                 Application.Exit();
@@ -185,55 +158,19 @@ namespace Plants_vs.Zombies_user_file_editor
             else
             {
                 var userName = formSelectUser.SelectedUser;
-                user = ReadUserFile(userName);
+                var userFilePath = formSelectUser.UserFilePath;
+                user = ReadUserFile(userName, userFilePath);
+                if (user == null)
+                {
+                    return;
+                }
                 PopulateControls();
             }
         }
 
-        private Dictionary<string, uint> ReadUsersFile()
+        private User ReadUserFile(string userName, string path)
         {
-            var result = new Dictionary<string, uint>();
-            var usersFilePath = pvzDataPath + "users.dat";
-            try
-            {
-                using (var reader = new BinaryReader(new FileStream(usersFilePath, FileMode.Open, FileAccess.Read)))
-                {
-                    var version = reader.ReadUInt32();
-                    if (version != 0x0E)
-                    {
-                        IncompatibleVersion();
-                    }
-                    var numUsers = reader.ReadUInt16();
-                    for (int i = 0; i < numUsers; i++)
-                    {
-                        var length = reader.ReadUInt16();
-                        var name = Encoding.ASCII.GetString(reader.ReadBytes(length));
-                        var timestamp = reader.ReadUInt32();
-                        var fileNumber = reader.ReadUInt32();
-                        result.Add(name, fileNumber);
-                    }
-                }
-            }
-            catch (FileNotFoundException e)
-            {
-                MessageBox.Show(String.Format(UsersFileNotFoundMessage, e.Message), UsersFileNotFoundCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Application.Exit();
-                return null;
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Unable to load users file \"" + usersFilePath + "\": " + e.Message + " Exiting application.", "Unable to load users file", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Application.Exit();
-                return null;
-            }
-
-            return result;
-        }
-
-        private User ReadUserFile(string name)
-        {
-            userFilePath = pvzDataPath + "user" + users[name] + ".dat";
-            var user = new User(name, userFilePath);
+            var user = new User(userName, path);
             try
             {
                 try
@@ -245,16 +182,16 @@ namespace Plants_vs.Zombies_user_file_editor
                     IncompatibleVersion();
                     user.Load(/*forceReadIncompatibleVersion*/true);
                 }
-                catch (FileNotFoundException e)
+                catch (FileNotFoundException)
                 {
-                    MessageBox.Show(String.Format(UsersFileNotFoundMessage, e.Message), UsersFileNotFoundCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, "User file \"" + path + "\" is missing in user data location. Exiting application.", "User file not found", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Application.Exit();
                     return null;
                 }
             }
             catch (Exception e)
             {
-                MessageBox.Show("Unable to load user file: " + e.Message + " Exiting application.", "Unable to load user file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, "Unable to load user file: " + e.Message + " Exiting application.", "Unable to load user file", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
             return user;
@@ -397,17 +334,17 @@ namespace Plants_vs.Zombies_user_file_editor
             // Create backup files
             for (int i=1; ; i++)
             {
-                backupFileName = userFilePath + ".bak." + i;
+                backupFileName = user.UserFilePath + ".bak." + i;
                 if (File.Exists(backupFileName)) continue;
                 break;
             }
             try
             {
-                File.Copy(userFilePath, backupFileName);
+                File.Copy(user.UserFilePath, backupFileName);
             }
             catch (Exception e)
             {
-                MessageBox.Show("Unable to create backup \"" + backupFileName + "\" of user file: " + e.Message + " Save aborted.", "Can't create backup", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, "Unable to create backup \"" + backupFileName + "\" of user file: " + e.Message + " Save aborted.", "Can't create backup", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -530,7 +467,7 @@ namespace Plants_vs.Zombies_user_file_editor
             }
             catch (Exception e)
             {
-                MessageBox.Show("Unable to save to user file: " + e.Message, "Unable to save", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, "Unable to save to user file: " + e.Message, "Unable to save", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -549,11 +486,11 @@ namespace Plants_vs.Zombies_user_file_editor
             comboBoxAdventureModeLevel.SelectedIndex = saveIndex;
         }
 
-        private void IncompatibleVersion()
+        public void IncompatibleVersion()
         {
             if (!acceptedIncompatibleVersion)
             {
-                if (MessageBox.Show(IncompatibleVersionMessage, IncompatibleVersionCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes)
+                if (MessageBox.Show(this, IncompatibleVersionMessage, IncompatibleVersionCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes)
                 {
                     Application.Exit();
                 }
@@ -583,7 +520,7 @@ namespace Plants_vs.Zombies_user_file_editor
 
         private void buttonReload_Click(object sender, EventArgs e)
         {
-            user = ReadUserFile(user.Name);
+            user = ReadUserFile(user.Name, user.UserFilePath);
             PopulateControls();
             MarkChanged(false);
         }
@@ -594,7 +531,7 @@ namespace Plants_vs.Zombies_user_file_editor
             {
                 if (p.ProcessName == "PlantsVsZombies")
                 {
-                    if (MessageBox.Show(GameIsRunningMessage, GameIsRunningCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes)
+                    if (MessageBox.Show(this, GameIsRunningMessage, GameIsRunningCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes)
                     {
                         return;
                     }
@@ -632,7 +569,7 @@ namespace Plants_vs.Zombies_user_file_editor
         {
             if (changed)
             {
-                if (MessageBox.Show(UnsavedChangesMessage, UnsavedChangesCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) != DialogResult.Yes)
+                if (MessageBox.Show(this, UnsavedChangesMessage, UnsavedChangesCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) != DialogResult.Yes)
                 {
                     e.Cancel = true;
                 }
@@ -691,7 +628,7 @@ namespace Plants_vs.Zombies_user_file_editor
         private void buttonLoadPlant_Click(object sender, EventArgs e)
         {
             var dialog = new OpenFileDialog();
-            if (dialog.ShowDialog() == DialogResult.OK)
+            if (dialog.ShowDialog(this) == DialogResult.OK)
             {
                 using (var reader = new BinaryReader(new FileStream(dialog.FileName, FileMode.Open, FileAccess.Read)))
                 {
@@ -716,24 +653,24 @@ namespace Plants_vs.Zombies_user_file_editor
         {
             if (listBoxPlants.SelectedIndices.Count == 0)
             {
-                MessageBox.Show("Before using Save, select a plant to save to a file.", "No plant selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, "Before using Save, select a plant to save to a file.", "No plant selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (listBoxPlants.SelectedIndices.Count > 1)
             {
-                MessageBox.Show("Only one plant can be saved to a file.", "Multiple plants selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, "Only one plant can be saved to a file.", "Multiple plants selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             var dialog = new SaveFileDialog();
-            if (dialog.ShowDialog() == DialogResult.OK)
+            if (dialog.ShowDialog(this) == DialogResult.OK)
             {
                 using (var writer = new BinaryWriter(new FileStream(dialog.FileName, FileMode.Create, FileAccess.Write)))
                 {
                     // Write version in case we need to support other versions in the future
                     writer.Write(0x0C);
                     user.ZenGardenPlants[listBoxPlants.SelectedIndex].Save(writer);
-                    MessageBox.Show("Plant saved to file \"" + dialog.FileName + "\".", "Plant saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(this, "Plant saved to file \"" + dialog.FileName + "\".", "Plant saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
