@@ -10,12 +10,13 @@ namespace Plants_vs.Zombies_user_file_editor
     {
         static public DateTime ReadDaysSince2000(BinaryReader reader)
         {
-            return new DateTime(2000, 1, 1).AddDays(reader.ReadInt32());
+            var value = reader.ReadInt32();
+            return value == 0 ? DateTime.MinValue : new DateTime(2000, 1, 1).AddDays(value);
         }
 
         static public void WriteDaysSince2000(BinaryWriter writer, DateTime date)
         {
-            writer.Write((int)date.Subtract(new DateTime(2000, 1, 1)).TotalDays);
+            writer.Write(date == DateTime.MinValue ? 0 : (int)date.Subtract(new DateTime(2000, 1, 1)).TotalDays);
         }
 
         static public int? ReadInt32Offset(BinaryReader reader, int offset)

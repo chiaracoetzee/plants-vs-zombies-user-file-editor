@@ -38,6 +38,18 @@ namespace Plants_vs.Zombies_user_file_editor
         {
             InitializeControlArrays();
             pvzDataPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + @"\PopCap Games\PlantsVsZombies\userdata\";
+            if (!Directory.Exists(pvzDataPath))
+            {
+                var programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86) != "" ? Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86) : Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+                pvzDataPath = programFiles + @"\PopCap Games\Plants vs. Zombies\userdata\";
+                using (StreamWriter writer = new StreamWriter("c:\\temp.txt")) { writer.WriteLine(pvzDataPath); }
+                if (!Directory.Exists(pvzDataPath))
+                {
+                    MessageBox.Show("User data path not found. Make sure Plants vs. Zombies is installed.", "Plants vs. Zombies user data path not found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Application.Exit();
+                    return;
+                }
+            }
             users = ReadUsersFile();
             if (users == null)
             {
