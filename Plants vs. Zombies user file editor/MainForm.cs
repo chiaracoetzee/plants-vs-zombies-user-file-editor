@@ -325,7 +325,7 @@ namespace Plants_vs.Zombies_user_file_editor
                 {
                     listBoxPlants.SelectedIndices.Add(index);
                 }
-                else
+                else if (index - 1 < listBoxPlants.Items.Count)
                 {
                     listBoxPlants.SelectedIndices.Add(index - 1);
                 }
