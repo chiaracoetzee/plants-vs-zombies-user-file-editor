@@ -32,8 +32,6 @@ namespace Plants_vs.Zombies_user_file_editor
         {
             InitializeControlArrays();
 
-            SelectUser();
-
             comboBoxPlantType.Items.AddRange(ZenGardenPlant.PlantTypeNames);
             foreach (string s in ZenGardenPlant.ColorNames)
             {
@@ -43,6 +41,8 @@ namespace Plants_vs.Zombies_user_file_editor
             {
                 if (s != "") comboBoxGarden.Items.Add(s);
             }
+
+            SelectUser();
         }
 
         CheckBox[] miniGameTrophyCheckbox = new CheckBox[20];
@@ -202,8 +202,8 @@ namespace Plants_vs.Zombies_user_file_editor
             // General tab
             textBoxPlayerName.Text = user.Name;
             numericUpDownNumTimesCompletedAdventureMode.Value = user.NumTimesAdventureModeCompleted;
-            comboBoxAdventureModeLevel.SelectedIndex = user.Level.Index;
             UpdateComboBoxAdventureModeLevelItems();
+            comboBoxAdventureModeLevel.SelectedIndex = user.Level.Index;
             numericUpDownMoney.Value = user.Money;
 
             for (int i = 0; i < miniGameTrophyCheckbox.Length; i++)

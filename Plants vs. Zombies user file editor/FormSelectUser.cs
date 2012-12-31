@@ -184,5 +184,14 @@ namespace Plants_vs.Zombies_user_file_editor
                 return pvzDataPath + @"\" + "user" + users[SelectedUser] + ".dat";
             }
         }
+
+        private void listBoxUsers_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (listBoxUsers.SelectedIndices.Count == 1)
+            {
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+        }
     }
 }

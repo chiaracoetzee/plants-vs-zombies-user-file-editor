@@ -52,7 +52,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Plants_vs.Zombies_user_file_editor.Properties.Resources._256px_Fiore_01_svg;
-            this.pictureBox1.Location = new System.Drawing.Point(80, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(101, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(120, 120);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -62,7 +62,7 @@
             // buttonOK
             // 
             this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonOK.Location = new System.Drawing.Point(100, 368);
+            this.buttonOK.Location = new System.Drawing.Point(125, 389);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(75, 23);
             this.buttonOK.TabIndex = 2;
@@ -107,16 +107,17 @@
             // 
             this.richTextBox1.Location = new System.Drawing.Point(18, 214);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(260, 148);
+            this.richTextBox1.Size = new System.Drawing.Size(304, 169);
             this.richTextBox1.TabIndex = 7;
             this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
+            this.richTextBox1.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.richTextBox1_LinkClicked);
             // 
             // FormAbout
             // 
             this.AcceptButton = this.buttonOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 403);
+            this.ClientSize = new System.Drawing.Size(334, 420);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
