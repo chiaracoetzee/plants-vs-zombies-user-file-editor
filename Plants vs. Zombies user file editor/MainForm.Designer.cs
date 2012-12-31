@@ -138,6 +138,8 @@
             this.textBoxPlayerName = new System.Windows.Forms.TextBox();
             this.labelPlayerName = new System.Windows.Forms.Label();
             this.tabPageAchievements = new System.Windows.Forms.TabPage();
+            this.buttonSelectNoAchievements = new System.Windows.Forms.Button();
+            this.buttonSelectAllAchievements = new System.Windows.Forms.Button();
             this.checkBoxAchievement19 = new System.Windows.Forms.CheckBox();
             this.checkBoxAchievement18 = new System.Windows.Forms.CheckBox();
             this.checkBoxAchievement17 = new System.Windows.Forms.CheckBox();
@@ -239,8 +241,7 @@
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonReload = new System.Windows.Forms.Button();
             this.buttonAbout = new System.Windows.Forms.Button();
-            this.buttonSelectAllAchievements = new System.Windows.Forms.Button();
-            this.buttonSelectNoAchievements = new System.Windows.Forms.Button();
+            this.buttonChangeUser = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
             this.groupBoxStore.SuspendLayout();
@@ -297,6 +298,7 @@
             // 
             // tabPageGeneral
             // 
+            this.tabPageGeneral.Controls.Add(this.buttonChangeUser);
             this.tabPageGeneral.Controls.Add(this.checkBoxHasTaco);
             this.tabPageGeneral.Controls.Add(this.checkBoxPuzzleModeUnlocked);
             this.tabPageGeneral.Controls.Add(this.checkBoxMiniGamesUnlocked);
@@ -1542,7 +1544,7 @@
             this.textBoxPlayerName.Location = new System.Drawing.Point(140, 4);
             this.textBoxPlayerName.Name = "textBoxPlayerName";
             this.textBoxPlayerName.ReadOnly = true;
-            this.textBoxPlayerName.Size = new System.Drawing.Size(249, 20);
+            this.textBoxPlayerName.Size = new System.Drawing.Size(180, 20);
             this.textBoxPlayerName.TabIndex = 1;
             // 
             // labelPlayerName
@@ -1584,6 +1586,26 @@
             this.tabPageAchievements.TabIndex = 3;
             this.tabPageAchievements.Text = "Achievements";
             this.tabPageAchievements.UseVisualStyleBackColor = true;
+            // 
+            // buttonSelectNoAchievements
+            // 
+            this.buttonSelectNoAchievements.Location = new System.Drawing.Point(89, 244);
+            this.buttonSelectNoAchievements.Name = "buttonSelectNoAchievements";
+            this.buttonSelectNoAchievements.Size = new System.Drawing.Size(75, 23);
+            this.buttonSelectNoAchievements.TabIndex = 21;
+            this.buttonSelectNoAchievements.Text = "&None";
+            this.buttonSelectNoAchievements.UseVisualStyleBackColor = true;
+            this.buttonSelectNoAchievements.Click += new System.EventHandler(this.buttonSelectNoAchievements_Click);
+            // 
+            // buttonSelectAllAchievements
+            // 
+            this.buttonSelectAllAchievements.Location = new System.Drawing.Point(8, 245);
+            this.buttonSelectAllAchievements.Name = "buttonSelectAllAchievements";
+            this.buttonSelectAllAchievements.Size = new System.Drawing.Size(75, 23);
+            this.buttonSelectAllAchievements.TabIndex = 20;
+            this.buttonSelectAllAchievements.Text = "&All";
+            this.buttonSelectAllAchievements.UseVisualStyleBackColor = true;
+            this.buttonSelectAllAchievements.Click += new System.EventHandler(this.buttonSelectAllAchievements_Click);
             // 
             // checkBoxAchievement19
             // 
@@ -2742,25 +2764,15 @@
             this.buttonAbout.UseVisualStyleBackColor = true;
             this.buttonAbout.Click += new System.EventHandler(this.buttonAbout_Click);
             // 
-            // buttonSelectAllAchievements
+            // buttonChangeUser
             // 
-            this.buttonSelectAllAchievements.Location = new System.Drawing.Point(8, 245);
-            this.buttonSelectAllAchievements.Name = "buttonSelectAllAchievements";
-            this.buttonSelectAllAchievements.Size = new System.Drawing.Size(75, 23);
-            this.buttonSelectAllAchievements.TabIndex = 20;
-            this.buttonSelectAllAchievements.Text = "&All";
-            this.buttonSelectAllAchievements.UseVisualStyleBackColor = true;
-            this.buttonSelectAllAchievements.Click += new System.EventHandler(this.buttonSelectAllAchievements_Click);
-            // 
-            // buttonSelectNoAchievements
-            // 
-            this.buttonSelectNoAchievements.Location = new System.Drawing.Point(89, 244);
-            this.buttonSelectNoAchievements.Name = "buttonSelectNoAchievements";
-            this.buttonSelectNoAchievements.Size = new System.Drawing.Size(75, 23);
-            this.buttonSelectNoAchievements.TabIndex = 21;
-            this.buttonSelectNoAchievements.Text = "&None";
-            this.buttonSelectNoAchievements.UseVisualStyleBackColor = true;
-            this.buttonSelectNoAchievements.Click += new System.EventHandler(this.buttonSelectNoAchievements_Click);
+            this.buttonChangeUser.Location = new System.Drawing.Point(326, 2);
+            this.buttonChangeUser.Name = "buttonChangeUser";
+            this.buttonChangeUser.Size = new System.Drawing.Size(75, 23);
+            this.buttonChangeUser.TabIndex = 18;
+            this.buttonChangeUser.Text = "Change...";
+            this.buttonChangeUser.UseVisualStyleBackColor = true;
+            this.buttonChangeUser.Click += new System.EventHandler(this.buttonChangeUser_Click);
             // 
             // MainForm
             // 
@@ -3046,6 +3058,7 @@
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Button buttonSelectNoAchievements;
         private System.Windows.Forms.Button buttonSelectAllAchievements;
+        private System.Windows.Forms.Button buttonChangeUser;
     }
 }
 

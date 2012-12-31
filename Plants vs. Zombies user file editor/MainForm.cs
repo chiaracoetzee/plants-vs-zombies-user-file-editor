@@ -42,7 +42,10 @@ namespace Plants_vs.Zombies_user_file_editor
                 if (s != "") comboBoxGarden.Items.Add(s);
             }
 
-            SelectUser();
+            if (!SelectUser())
+            {
+                Application.Exit();
+            }
         }
 
         CheckBox[] miniGameTrophyCheckbox = new CheckBox[20];
@@ -148,12 +151,12 @@ namespace Plants_vs.Zombies_user_file_editor
             achievementCheckBox[19] = checkBoxAchievement19;
         }
 
-        private void SelectUser()
+        private bool SelectUser()
         {
-            var formSelectUser = new FormSelectUser();
+            var formSelectUser = new FormSelectUser(user != null ? user.Name : null);
             if (formSelectUser.ShowDialog(this) != DialogResult.OK)
             {
-                Application.Exit();
+                return false;
             }
             else
             {
@@ -162,9 +165,10 @@ namespace Plants_vs.Zombies_user_file_editor
                 user = ReadUserFile(userName, userFilePath);
                 if (user == null)
                 {
-                    return;
+                    return false;
                 }
                 PopulateControls();
+                return true;
             }
         }
 
@@ -938,6 +942,19 @@ namespace Plants_vs.Zombies_user_file_editor
                 checkBox.Checked = false;
             }
             MarkChanged(true);
+        }
+
+        private void buttonChangeUser_Click(object sender, EventArgs e)
+        {
+            if (changed)
+            {
+                if (MessageBox.Show(this, "You have made changes but not saved them to the user file. If you change users without saving they will be lost. Are you sure you wish to change users?", UnsavedChangesCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) != DialogResult.Yes)
+                {
+                    return;
+                }
+            }
+
+            SelectUser();
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Plants_vs.Zombies_user_file_editor
         string pvzDataPath;
         Dictionary<string, uint> users = new Dictionary<string, uint>();
         
-        public FormSelectUser()
+        public FormSelectUser(string currentName)
         {
             InitializeComponent();
 
@@ -45,6 +45,7 @@ namespace Plants_vs.Zombies_user_file_editor
 
             users = ReadUsersFile(pvzDataPath);
             UpdateList();
+            listBoxUsers.SelectedItem = currentName;
         }
 
         private void UpdateList()
